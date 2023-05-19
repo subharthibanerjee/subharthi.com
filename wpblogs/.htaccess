@@ -1,0 +1,9 @@
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /wpblogs/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wpblogs/index.php [L]
+</IfModule>

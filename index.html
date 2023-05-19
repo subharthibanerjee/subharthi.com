@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    
+<title>subharthi.com</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="http://subharthi.com/images/icons/favicon.ico">
+<style>
+
+.fa:hover {
+    opacity: 0.7;
+}
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  width: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-color: #232b2b;
+
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    
+    
+}
+@keyframes blinker {  
+  from { opacity: 1;}
+  to { opacity: 0; }
+}
+.nav ul {
+    *zoom:1;
+    list-style:none;
+    margin:0;
+    padding:0;
+    background:#6C7A89;
+    opacity:1;
+    
+}
+.nav {
+    
+    animation: blinker 1.5s infinite alternate;
+}
+.nav:hover{
+    
+     -webkit-animation-play-state: paused; /* Safari 4.0 - 8.0 */
+    animation-play-state: paused;
+    animation:0;
+     
+     
+}
+.nav:active{
+    opacity:1;
+}
+
+.nav ul:before,.nav ul:after {
+    content:"";
+    display:table;
+    
+}
+.nav ul:after {
+    clear:both;
+}
+.nav ul > li {
+    float:left;
+    position:relative;
+}
+.nav a {
+    display:block;
+    padding:10px 20px;
+    line-height:1.2em;
+    color:#fff;
+    border-left:1px solid #2D4262;
+    text-decoration: none;
+}
+.nav a:hover,
+.nav a:focus{
+    text-decoration:none;
+    background:  #6C7A89;
+    
+}
+.nav li ul {
+    background:#F54105 ;
+}
+.nav li ul li {
+    width:140px;
+}
+.nav li ul a {
+    border:none;
+}
+.nav li ul a:hover,
+.nav li ul a:focus{
+    background:rgba(0,0,0,0.2);
+   
+    
+}
+.nav li ul {
+    position:absolute;
+    left:0;
+    top:36px;
+    z-index:1;
+    max-height:0;
+    overflow:hidden;
+    -webkit-transform:perspective(400) rotate3d(1,0,0,-90deg);
+    -webkit-transform-origin:50% 0;
+    -webkit-transition:350ms;
+    -moz-transition:350ms;
+    -o-transition:350ms;
+    transition:350ms;
+    
+}
+.nav ul > li:hover ul,
+.nav ul > li:focus ul{
+    max-height:1000px;
+    -webkit-transform:perspective(400) rotate3d(0,0,0,0);
+    
+    
+    
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white" onclick="void(0)">
+
+
+
+<nav class="nav" onclick="void(0)">
+    <ul>
+        <li>	
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <i class="material-icons" style="font-size:50px">menu</i>
+  </div>
+<ul>
+          <li><a href="main.php#about">Main Page</a></li>
+		  <li><a href="main.php#interests">Interests</a></li>
+
+                <li><a href="main.php#education">Education</a></li>
+                <li><a href="main.php#research">Research</a></li>
+		<li><a href="main.php#awards">Awards & Fellowships</a></li>
+		<li><a href="main.php#pubs">Publications</a></li>
+
+		<!-- <li><a href="main.php#blog">Blog</a></li> -->
+
+		<li><a href="main.php#resume">Resume</a></li>
+
+		<li><a href="main.php#contact">Contact</a></li>
+
+
+</ul>
+   
+	    </li>
+	    </ul> 
+</nav>
+  <div class="w3-display-middle">
+  <hr class="w3-border-grey" style="margin:auto;width:40%">
+  
+	  <p class="w3-large w3-center w3-animate-top">Hi, I am <span style="color: #606060; font-size:27px">Subharthi</span>.                 Stacking one pebble at a time to ensure <span style="color: #BEBEBE; font-size:25px">safety</span>, <span style="color:#989898; font-size:25px">security</span> and <span style="color: #585858; font-size:25px">comfort</span> for the people and 'not'-people.</p>
+
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+   <p class="w3-enter" id = "days" style="text-align:center; color:#989898;" > 
+    <script src="assets/js/clock.js"></script></p>
+    <!-- <p style="text-align:center"> <span style="color:#989898; font-size:15px">days left to graduate</span></p> -->
+  </div>
+
+     <div class="w3-display-bottomright w3-padding-large w3-xlarge">
+    <a href="#" class="fa fa-facebook-official" style="font-size:24px"></a> 
+    <a href="#" class="fa fa-instagram" style="font-size:24px"></a> 
+     <a href="https://www.linkedin.com/in/subharthibanerjee/"  class="fa fa-linkedin" style="font-size:24px"></a> 
+    <a href="https://github.com//subharthibanerjee" class="fa fa-github" style="font-size:24px"></a>
+     </div>
+
+ </div>
+
+</body>
+</html>
+
