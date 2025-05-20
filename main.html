@@ -787,5 +787,17 @@ Led initiatives and innovations to support Ford's goal to be 'Always On' by intr
         window.addEventListener('scroll', setActiveMenuItem);
         </script>
 
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelines = document.querySelectorAll('.timeline');
+            
+            timelines.forEach(timeline => {
+                timeline.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+        });
+        </script>
+
 	</body>
 </html>

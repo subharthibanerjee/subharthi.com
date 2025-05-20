@@ -291,7 +291,7 @@ pre {
     border: solid 3px transparent; 
     border-radius: 1em;
     width: 100%;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
 .text-block::before {
@@ -317,7 +317,7 @@ pre {
     border: solid 3px transparent; 
     border-radius: 1em;
     width: 100%;
-    margin-top: 20px;
+    margin: 0;
 }
 
 .text-block-1::before {
@@ -330,10 +330,19 @@ pre {
     background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);
 }
 
+.nofloat {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 @media (min-width: 1400px) {
     .text-block {
         position: absolute;
         width: 400px;
+        margin: 0;
     }
     
     .text-block-1 {
@@ -345,8 +354,7 @@ pre {
 
 @media (max-width: 1400px) {
     .text-block-1 {
-        margin-top: 20px;
-        margin-left: 0;
+        margin: 20px 0 0 0;
     }
     
     .nofloat {
@@ -355,14 +363,87 @@ pre {
 }
 
 @media screen and (max-width: 768px) {
+    .content {
+        width: 95%;
+        padding: 60px 10px 0 10px;
+        margin: 0 auto;
+    }
+
+    ul.ex1 {
+        flex-wrap: wrap;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    li.ex1 {
+        float: none;
+        margin: 5px 8px;
+    }
+
+    li.ex1 a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        white-space: nowrap;
+    }
+
+    .nofloat {
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
     .text-block, .text-block-1 {
         width: 100%;
-        margin: 10px 0;
+        margin: 15px 0;
         position: relative;
+        padding: 15px;
     }
-    
-    .nofloat {
-        padding-bottom: 20px;
+
+    h1 {
+        font-size: 1.8em;
+        word-wrap: break-word;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        word-wrap: break-word;
+    }
+
+    h3 {
+        font-size: 1.3em;
+        word-wrap: break-word;
+    }
+
+    h4 {
+        font-size: 1.1em;
+        word-wrap: break-word;
+    }
+
+    p {
+        font-size: 0.9em;
+        word-wrap: break-word;
+    }
+}
+
+/* Add specific styles for very small phones */
+@media screen and (max-width: 360px) {
+    .content {
+        width: 98%;
+        padding: 60px 5px 0 5px;
+    }
+
+    li.ex1 {
+        margin: 3px 5px;
+    }
+
+    li.ex1 a {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+
+    .text-block, .text-block-1 {
+        padding: 12px;
+        margin: 10px 0;
     }
 }
 
@@ -673,11 +754,72 @@ hr.ab1 {
     transition: all 0.5s ease;
     max-height: 100px;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.timeline:hover {
-    max-height: none; /* Remove max-height restriction on hover */
-    overflow: visible; /* Allow content to be fully visible */
+/* Add touch device support */
+@media (hover: none) {
+    .timeline.expanded {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .timeline.expanded .timeline-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .timeline.expanded .timeline-item:nth-child(even) {
+        transform: translateX(0);
+    }
+
+    .timeline.expanded .timeline-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .timeline.expanded::before {
+        opacity: 0;
+    }
+}
+
+/* Keep hover effects for non-touch devices */
+@media (hover: hover) {
+    .timeline:hover {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .timeline:hover .timeline-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .timeline:hover .timeline-item:nth-child(even) {
+        transform: translateX(0);
+    }
+
+    .timeline:hover .timeline-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .timeline:hover::before {
+        opacity: 0;
+    }
+}
+
+/* Update the hint text for touch devices */
+@media (hover: none) {
+    .timeline::before {
+        content: 'Tap to expand timeline';
+    }
+}
+
+@media (hover: hover) {
+    .timeline::before {
+        content: 'Hover to expand timeline';
+    }
 }
 
 .timeline::after {
@@ -702,19 +844,10 @@ hr.ab1 {
     margin: 30px 0;
 }
 
-.timeline:hover .timeline-item {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 .timeline-item:nth-child(even) {
     left: calc(50% + 30px);
     width: calc(50% - 30px);
     transform: translateX(100px);
-}
-
-.timeline:hover .timeline-item:nth-child(even) {
-    transform: translateX(0);
 }
 
 .timeline-dot {
@@ -760,11 +893,6 @@ hr.ab1 {
     box-sizing: border-box;
 }
 
-.timeline:hover .timeline-content {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .timeline-content h5 {
     margin: 0 0 10px 0;
     font-size: 1.2em;
@@ -785,121 +913,9 @@ hr.ab1 {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Add a hint for users */
-.timeline::before {
-    content: 'Hover to expand timeline';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fdfdfd;
-    font-size: 0.9em;
-    opacity: 0.7;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.timeline:hover::before {
-    opacity: 0;
-}
-
 /* Add smooth scrolling to the page */
 html {
     scroll-behavior: smooth;
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    .content {
-        width: 90%;
-        padding: 60px 15px 0 15px;
-    }
-
-    ul.ex1 {
-        flex-wrap: wrap;
-        padding: 10px 0;
-    }
-
-    li.ex1 {
-        float: none;
-        margin: 5px 10px;
-    }
-
-    li.ex1 a {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
-
-    .nofloat {
-        flex-direction: column;
-    }
-
-    .text-block, .text-block-1 {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    h1 {
-        font-size: 1.8em;
-    }
-
-    h2 {
-        font-size: 1.5em;
-    }
-
-    h3 {
-        font-size: 1.3em;
-    }
-
-    h4 {
-        font-size: 1.1em;
-    }
-
-    p {
-        font-size: 0.9em;
-    }
-
-    .timeline {
-        margin: 30px 0;
-        padding: 0;
-    }
-
-    .timeline::before {
-        left: 20px;
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 20px;
-    }
-
-    .timeline-item:nth-child(even) {
-        padding-left: 50px;
-        padding-right: 20px;
-    }
-
-    .timeline-dot {
-        left: 10px;
-    }
-
-    .timeline-date {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin-bottom: 10px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-date {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin-bottom: 10px;
-    }
-
-    .timeline-content {
-        width: 100%;
-    }
 }
 
 /* Tablet Responsiveness */
