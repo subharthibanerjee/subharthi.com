@@ -280,36 +280,93 @@ pre {
   }
   
   .text-block {
-  
     display: flex;
-    
-  
-    
-    
-    position: absolute;
+    position: relative;
     padding: 1% 1em;
     box-sizing: border-box;
-    
     word-break: break-all;
-    
     color: #FFF;
     background: #000;
     background-clip: padding-box; 
     border: solid 3px transparent; 
     border-radius: 1em;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.text-block::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -3px; 
+    border-radius: inherit; 
+    background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%);
+}
+
+.text-block-1 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1% 1em;
+    box-sizing: border-box;
+    word-break: break-all;
+    color: #FFF;
+    background: #000;
+    background-clip: padding-box; 
+    border: solid 3px transparent; 
+    border-radius: 1em;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.text-block-1::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -3px; 
+    border-radius: inherit; 
+    background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);
+}
+
+@media (min-width: 1400px) {
+    .text-block {
+        position: absolute;
+        width: 400px;
+    }
     
-   
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      z-index: -1;
-      margin: -3px; 
-      border-radius: inherit; 
-      background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%);
+    .text-block-1 {
+        position: absolute;
+        margin-left: 420px;
+        width: 400px;
     }
 }
-  .text-color{
+
+@media (max-width: 1400px) {
+    .text-block-1 {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    
+    .nofloat {
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .text-block, .text-block-1 {
+        width: 100%;
+        margin: 10px 0;
+        position: relative;
+    }
+    
+    .nofloat {
+        padding-bottom: 20px;
+    }
+}
+
+.text-color{
     font-size:.8em;
     background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 
@@ -321,48 +378,7 @@ pre {
     font-family: var(--font-fam);
   }
 
-  .text-block-1 {
-  
-    display: flex;
-    
-    flex-direction: column;
-    
-    margin-left: 420px;
-    position: absolute;
-    padding: 1% 1em;
-    box-sizing: border-box;
-    
-    word-break: break-all;
-    
-    color: #FFF;
-    background: #000;
-    background-clip: padding-box; 
-    border: solid 3px transparent; 
-    border-radius: 1em;
-    
-   
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      z-index: -1;
-      margin: -3px; 
-      border-radius: inherit; 
-      background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);
-    }
-}
-@media (max-width: 1400px) {
-    .text-block-1 {
-      /* Remove absolute positioning and just use the flow of the document */
-      margin-top: 420px; /* Remove previous left margin */
-      margin-left:0;
-      
-    }
-    .nofloat{
-        padding-bottom:400px;
-    }
-  }
-a.links {
+  a.links {
     color: #777;
     background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%);
     background-clip: text;
@@ -790,4 +806,105 @@ hr.ab1 {
 /* Add smooth scrolling to the page */
 html {
     scroll-behavior: smooth;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .content {
+        width: 90%;
+        padding: 60px 15px 0 15px;
+    }
+
+    ul.ex1 {
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+
+    li.ex1 {
+        float: none;
+        margin: 5px 10px;
+    }
+
+    li.ex1 a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .nofloat {
+        flex-direction: column;
+    }
+
+    .text-block, .text-block-1 {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    h4 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    .timeline {
+        margin: 30px 0;
+        padding: 0;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+
+    .timeline-item:nth-child(even) {
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+
+    .timeline-dot {
+        left: 10px;
+    }
+
+    .timeline-date {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 10px;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+}
+
+/* Tablet Responsiveness */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content {
+        width: 75%;
+    }
 }
