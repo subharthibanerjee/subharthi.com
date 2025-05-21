@@ -62,7 +62,7 @@
                 <sup>Wireless Systems and Architecture, Principal@<font style="color:aliceblue">NXP</font></sup>
                 <p>Helping wireless system research and development navigate through idea, prototype, 
                     debug to product. <br>Bringing AI to hardware DSP reimagining compliance and long-term maintenance cycles.
-                <br>Experienced in promoting and bullwarking early tech adoptions in automotive to support customers build products
+                <br>Experienced in promoting and bulwarking early tech adoptions in automotive to support customers build products
             that I am the consumer of.  </p>
                  <h4 style="margin-top: 25px">Worked @<h4>
                     <br>
@@ -684,7 +684,8 @@ Led initiatives and innovations to support Ford's goal to be 'Always On' by intr
 
         <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
+            // Timeline observer
+            const timelineObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
@@ -695,7 +696,25 @@ Led initiatives and innovations to support Ford's goal to be 'Always On' by intr
             });
 
             document.querySelectorAll('.timeline-item').forEach((item) => {
-                observer.observe(item);
+                timelineObserver.observe(item);
+            });
+
+            // Awards and Publications observer
+            const awardsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '-50px 0px'
+            });
+
+            document.querySelectorAll('.awards-container li').forEach((item) => {
+                awardsObserver.observe(item);
             });
         });
         </script>
