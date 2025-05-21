@@ -795,10 +795,26 @@ hr.ab1 {
     .timeline {
         padding: 10px;
         margin: 30px auto;
+        max-height: 60px; /* Reduced height for collapsed state */
+    }
+
+    .timeline:not(.expanded) .timeline-item {
+        display: none; /* Hide all items when collapsed */
+    }
+
+    .timeline.expanded {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .timeline.expanded .timeline-item {
+        display: block; /* Show items when expanded */
+        opacity: 1;
+        transform: none;
     }
 
     .timeline::after {
-        display: none; /* Remove vertical line */
+        display: none;
     }
 
     .timeline-item {
@@ -817,7 +833,7 @@ hr.ab1 {
     }
 
     .timeline-dot {
-        display: none; /* Remove dots */
+        display: none;
     }
 
     .timeline-date {
@@ -876,32 +892,41 @@ hr.ab1 {
             rgba(78, 205, 196, 0.3) 0%,
             rgba(255, 107, 107, 0.3) 100%);
     }
-}
 
-/* Add touch device support */
-@media (hover: none) {
-    .timeline.expanded {
-        max-height: none;
-        overflow: visible;
-    }
-
-    .timeline.expanded .timeline-item {
-        opacity: 1;
-        transform: none;
-    }
-
-    .timeline.expanded .timeline-content {
-        opacity: 1;
-        transform: none;
-    }
-
-    .timeline.expanded::before {
-        opacity: 0;
+    /* Mobile hint text */
+    .timeline::before {
+        content: 'Tap to expand timeline';
+        font-size: 0.9em;
+        color: #4ECDC4;
+        text-align: center;
+        display: block;
+        margin-bottom: 15px;
     }
 }
 
-/* Keep hover effects for non-touch devices */
-@media (hover: hover) {
+/* Desktop timeline styles */
+@media screen and (min-width: 769px) {
+    .timeline::before {
+        content: 'Hover to expand timeline';
+        font-size: 0.9em;
+        color: #4ECDC4;
+        text-align: center;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+        transition: all 0.5s ease;
+    }
+
     .timeline:hover {
         max-height: none;
         overflow: visible;
@@ -919,44 +944,6 @@ hr.ab1 {
 
     .timeline:hover::before {
         opacity: 0;
-    }
-}
-
-/* Update the hint text for touch devices */
-@media (hover: none) {
-    .timeline::before {
-        content: 'Tap to expand timeline';
-        font-size: 0.9em;
-        color: #4ECDC4;
-        text-align: center;
-        display: block;
-        margin-bottom: 15px;
-    }
-}
-
-@media (hover: hover) {
-    .timeline::before {
-        content: 'Hover to expand timeline';
-        font-size: 0.9em;
-        color: #4ECDC4;
-        text-align: center;
-        display: block;
-        margin-bottom: 15px;
-    }
-}
-
-/* Desktop timeline styles */
-@media screen and (min-width: 769px) {
-    .timeline::after {
-        content: '';
-        position: absolute;
-        width: 2px;
-        background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%);
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -1px;
-        transition: all 0.5s ease;
     }
 
     .timeline-item {
